@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import org.hibernate.Session;
 
 import com.learning.cmad.user.api.User;
 
@@ -23,7 +26,11 @@ public class JPAUserDAO implements UserDAO {
 
 	@Override
 	public List<User> getAllUsers() {
-		return null;
+
+		Query query = em.createQuery("from User");
+		List<User> users = query.getResultList();
+		return users;
+
 	}
 
 	@Override
