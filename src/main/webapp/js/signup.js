@@ -22,7 +22,7 @@ $(document).ready(function() {
 			url: "/heapunderflow/service/user/signup",
 			success: function(data) {
 				//localStorage.token = data.token;
-				alert('Got a token from the server! Token: ' + data);//+ data.token);
+				alert('Got a token from the server! Token: ' + data.token);//+ data.token);
 			},
 			error: function() {
 				alert("Signup Failed");
