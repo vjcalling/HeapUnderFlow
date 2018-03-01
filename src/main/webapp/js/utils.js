@@ -2,8 +2,8 @@
 $(document).ready(function() {
 
 	$(function(){
-		$("#header").load("../html/header.html"); 
-		$("#footer").load("../html/footer.html"); 
+		$("#header").load("../page/header.html"); 
+		$("#footer").load("../page/footer.html"); 
 	});
 
 	$('#login').click(function() {

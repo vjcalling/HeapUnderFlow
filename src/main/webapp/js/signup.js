@@ -21,20 +21,13 @@ $(document).ready(function() {
 			dataType:"text",
 			url: "/heapunderflow/service/user/signup",
 			success: function(data) {
-				//localStorage.token = res.token;
+				//localStorage.token = data.token;
 				alert('Got a token from the server! Token: ' + data);//+ data.token);
-//				callbackfn(data);
-//				alert("Success");
 			},
 			error: function() {
 				alert("Signup Failed");
-//                callbackfn("Error getting the data")
 			}
 		});
 	});
 	
-//	function Callback(data)
-//    {
-//       alert(data);
-//    }
 });
