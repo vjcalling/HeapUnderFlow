@@ -25,37 +25,33 @@ public class SimpleBlog implements BlogInterface{
 
 	@Override
 	public List<Blog> getAllBlogs() throws BlogException {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getAllBlogs();
 	}
 
 	@Override
 	public Blog getBlogById(int id) throws BlogNotFoundException, BlogException {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getBlogById(id);
 	}
 
 	@Override
 	public List<Blog> getBlogsByAuthorId(int id) throws BlogNotFoundException, BlogException {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getBlogsByAuthorId(id);
 	}
 
 	@Override
 	public void updateBlog(Blog blog) throws InvalidBlogException, DuplicateBlogException, BlogException {
-		// TODO Auto-generated method stub
-		
+		dao.updateBlog(blog);
 	}
 
 	@Override
 	public void deleteBlog(Blog blog) throws InvalidBlogException, DuplicateBlogException, BlogException {
-		// TODO Auto-generated method stub
+		dao.deleteBlog(blog);
 		
 	}
 
 	@Override
 	public void deleteBlogById(int id) throws InvalidBlogException, DuplicateBlogException, BlogException {
-		// TODO Auto-generated method stub
+		dao.deleteBlogById(id);
 		
 	}
 

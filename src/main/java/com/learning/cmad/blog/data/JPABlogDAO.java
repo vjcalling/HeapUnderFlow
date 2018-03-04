@@ -33,31 +33,39 @@ public class JPABlogDAO implements BlogDAO {
 
 	@Override
 	public Blog getBlogById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createQuery("from Blog where blogId = :id").setParameter("id", id);
+		Blog blog = (Blog) query.getSingleResult();
+		return blog;
 	}
 
 	@Override
 	public List<Blog> getBlogsByAuthorId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createQuery("from Blog where blogAuthorId = :id").setParameter("id", id);
+		List<Blog> blogs = query.getResultList();
+		return blogs;
 	}
 
 	@Override
 	public void updateBlog(Blog blog) {
-		// TODO Auto-generated method stub
+		em.getTransaction().begin();
+		em.merge(blog);	//merging the object
+		em.getTransaction().commit();
+		em.close();
 		
 	}
 
 	@Override
 	public void deleteBlog(Blog blog) {
-		// TODO Auto-generated method stub
+		deleteBlogById(blog.getBlogId());
 		
 	}
 
 	@Override
 	public void deleteBlogById(int id) {
-		// TODO Auto-generated method stub
+		em.getTransaction().begin();
+		em.remove(em.find(Blog.class, id));
+		em.getTransaction().commit();
+		em.close();
 		
 	}
 
