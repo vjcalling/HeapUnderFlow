@@ -50,7 +50,7 @@ public class JPAUserDAO implements UserDAO {
 	public void updateUser(User user) {
 
 		em.getTransaction().begin();
-		em.merge(user);
+		em.merge(user);	//merging the object
 		em.getTransaction().commit();
 		em.close();
 	}
