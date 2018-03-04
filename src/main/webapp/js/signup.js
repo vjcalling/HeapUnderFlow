@@ -39,6 +39,9 @@ $(document).ready(function() {
 					data: JSON.stringify(user1),
 					dataType:"text",
 					url: "/heapunderflow/service/user/signup",
+					headers: {
+						"Accept": 'application/vnd.heapunderflow-v2+json'
+					},
 					success: function(data) {
 						sessionStorage.token = data;
 						alert('Got a token from the server! Token: ' + data);
