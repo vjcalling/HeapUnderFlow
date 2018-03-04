@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 import com.learning.cmad.user.api.BlogUser;
 import com.learning.cmad.user.api.User;
 import com.learning.cmad.user.biz.SimpleBlogUser;
+import com.learning.cmad.utils.EncryptorDecryptor;
 import com.learning.cmad.utils.JWTTokenHelper;
 
 
@@ -58,17 +59,22 @@ public class UserRootResource {
     @Path("/signup")
 	@Produces("application/vnd.heapunderflow-v2+json")
 	public Response signupUserVersion2(User newUser) throws URISyntaxException {
+		newUser.setPassword(EncryptorDecryptor.encryptData(newUser.getPassword())); 	//encrypt password before persisting
 		user.createUser(newUser);
-		String token = "Version 2"+jwtTokenHelper.createJWT("1", newUser.getUsername(), "sample subject", 15000);
+		String token = jwtTokenHelper.createJWT("1", newUser.getUsername(), "sample subject", 15000);
 		return Response.ok(token).build();
 	}
 	
 	@POST
     @Path("/login")
 	public Response loginUser(User loginUser, @HeaderParam("token") String token) {
-		user.createUser(loginUser);
+		System.out.println("Username entered: "+loginUser.getUsername());
+		System.out.println("Password entered: "+loginUser.getPassword());
+		System.out.println("Password after encrypting: "+EncryptorDecryptor.encryptData(loginUser.getPassword()));
+		
 		System.out.println("Token is: "+token);
 		String token1 = jwtTokenHelper.createJWT(UUID.randomUUID().toString(), loginUser.getUsername(), "sample subject", 15000);
+	
 		return Response.ok(token1).build();
 
 		
