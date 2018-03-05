@@ -26,7 +26,7 @@ public class JPABlogDAO implements BlogDAO {
 
 	@Override
 	public List<Blog> getAllBlogs() {
-		Query query = em.createQuery("from Blog");
+		Query query = em.createQuery("from Blog");	//select * from Blog table
 		List<Blog> blogs = query.getResultList();
 		return blogs;
 	}
