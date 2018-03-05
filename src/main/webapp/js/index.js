@@ -9,7 +9,7 @@ $(document).ready(function() {
 	
 //--------------------------------------------------------------------------
 		
-	var img = '<img src="assets/images/avatars/' + 2 + '.jpg" alt=""/>';
+	var img = '<img src="assets/images/avatars/' + 4 + '.jpg" alt=""/>';
 	$.ajax({
 		type: "GET",
 		contentType: "application/json; charset=utf-8",
@@ -30,7 +30,6 @@ $(document).ready(function() {
 		
 		$.each($.parseJSON(response), function(i, item) {
 		      $('<tr>').append(
-		          
 		          '<td>' + img + '</td>',
 		          $('<td>').text(item.username),
 		          $('<td>').text(item.email),

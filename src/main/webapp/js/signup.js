@@ -9,11 +9,11 @@ $(document).ready(function() {
 		rules: {
 			firstname1: {
 				required: true,
-				minlength: 5
+				minlength: 3
 			},
 			lastname1: {
 				required: true,
-				minlength: 5
+				minlength: 3
 			},
 			email1: {
 				required: true,
