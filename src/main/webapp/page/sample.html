@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here123</title>
+<script src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$.ajax({
+		type: "GET",
+		contentType: "application/json; charset=utf-8",
+		async: false,
+		dataType:"text",
+		url: "/heapunderflow/service/user",
+		success: function(response) {
+			$.each($.parseJSON(response), function(i, item) {
+			      $('<tr>').append(
+			          $('<td>').text(item.userId),
+			          $('<td>').text(item.firstName),
+			          $('<td>').text(item.lastName),
+			          $('<td>').text(item.username),
+			          $('<td>').text(item.email),
+			          $('<td>').text(item.password)
+			      ).appendTo('#records_table');
+			  });
+		},
+		error: function() {
+			alert("Signup Failed");
+		}
+	});		
+});		
+
+</script>
+
+</head>
+<body>
+
+	<table id="records_table" border='1'>
+		<tr>
+			<th>userId</th>
+			<th>firstName</th>
+			<th>lastName</th>
+			<th>username</th>
+			<th>email</th>
+			<th>password</th>
+		</tr>
+	</table>
+
+
+</body>
+</html>
