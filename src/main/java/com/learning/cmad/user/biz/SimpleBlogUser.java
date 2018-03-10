@@ -2,6 +2,7 @@ package com.learning.cmad.user.biz;
 
 import java.util.List;
 
+import com.learning.cmad.blog.api.Blog;
 import com.learning.cmad.user.api.BlogUser;
 import com.learning.cmad.user.api.DuplicateUserException;
 import com.learning.cmad.user.api.InvalidUserException;
@@ -49,6 +50,11 @@ public class SimpleBlogUser implements BlogUser {
 	@Override
 	public void deleteUserById(int id) throws InvalidUserException, UserNotFoundException, UserException {
 		dao.deleteUserById(id);
+	}
+
+	@Override
+	public List<Blog> getBlogsByUserId(int id) throws UserNotFoundException, UserException {
+		return dao.getBlogsByUserId(id);
 	}
 
 }

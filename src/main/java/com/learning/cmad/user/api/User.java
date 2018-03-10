@@ -1,10 +1,16 @@
 package com.learning.cmad.user.api;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.OneToMany;
+
+import com.learning.cmad.blog.api.Blog;
 
 @Entity
 public class User {
@@ -18,13 +24,22 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<Blog> userBlogs;
 
+	
 	//---------------------------------------------------------------------------
 
 	public User(){
 
 	}
 
+	//---------------------------------------------------------------------------
+
+	public List<Blog> getUserBlogs() {
+		return userBlogs;
+	}
 
 	//---------------------------------------------------------------------------
 
@@ -72,6 +87,10 @@ public class User {
 		this.password = password;
 	}
 
+
+	public void setUserBlogs(List<Blog> userBlogs) {
+		this.userBlogs = userBlogs;
+	}
 
 	//---------------------------------------------------------------------------
 

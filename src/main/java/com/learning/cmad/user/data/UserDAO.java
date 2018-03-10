@@ -2,6 +2,7 @@ package com.learning.cmad.user.data;
 
 import java.util.List;
 
+import com.learning.cmad.blog.api.Blog;
 import com.learning.cmad.user.api.User;
 
 public interface UserDAO {
@@ -20,4 +21,6 @@ public interface UserDAO {
 	//Delete
 	public void deleteUser(User user);
 	public void deleteUserById(int id);
+
+	public List<Blog> getBlogsByUserId(int id);
 }

@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import org.hibernate.Session;
 
+import com.learning.cmad.blog.api.Blog;
 import com.learning.cmad.user.api.User;
 
 public class JPAUserDAO implements UserDAO {
@@ -61,6 +62,12 @@ public class JPAUserDAO implements UserDAO {
 		em.remove(em.find(User.class, id));
 		em.getTransaction().commit();
 		em.close();
+	}
+
+	@Override
+	public List<Blog> getBlogsByUserId(int id) {
+		User user = getUserById(id);
+		return user.getUserBlogs();
 	}
 
 }

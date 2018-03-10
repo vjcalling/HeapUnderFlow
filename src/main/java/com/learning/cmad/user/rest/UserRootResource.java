@@ -16,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.learning.cmad.blog.api.Blog;
 import com.learning.cmad.user.api.BlogUser;
 import com.learning.cmad.user.api.User;
 import com.learning.cmad.user.biz.SimpleBlogUser;
@@ -44,6 +45,14 @@ public class UserRootResource {
 	public Response getUserById(@PathParam("id") int userId) {
 		User currentUser = user.getUserById(userId);
 		return Response.ok().entity(currentUser).build();
+	}
+	
+	
+	@GET
+    @Path("/{id}/blog")
+	public Response getBlogsByUserId(@PathParam("id") int userId) {
+		List<Blog> userBlogs = user.getBlogsByUserId(userId);
+		return Response.ok().entity(userBlogs).build();
 	}
 	
 	@PUT

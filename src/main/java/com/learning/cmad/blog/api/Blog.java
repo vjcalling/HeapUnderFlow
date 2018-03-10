@@ -6,14 +6,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.learning.cmad.user.api.User;
 
 @Entity
 public class Blog {
 
+	
+	@ManyToOne
+    @JoinColumn(name="userId", nullable=false)
+	private User user;
+	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int blogId;
 	private String blogTitle;
-	private String blogAuthor;
 	private int blogAuthorId;
 	private Date blogCreation;
 	
@@ -33,12 +41,7 @@ public class Blog {
 	public void setBlogTitle(String blogTitle) {
 		this.blogTitle = blogTitle;
 	}
-	public String getBlogAuthor() {
-		return blogAuthor;
-	}
-	public void setBlogAuthor(String blogAuthor) {
-		this.blogAuthor = blogAuthor;
-	}
+	
 	public int getBlogAuthorId() {
 		return blogAuthorId;
 	}

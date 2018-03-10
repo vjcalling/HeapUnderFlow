@@ -29,7 +29,6 @@ public class BlogRootResource {
 		List<Blog> blogs = new ArrayList<>(); 
 		Blog blog = new Blog();
 		blog.setBlogTitle("Blog title");
-		blog.setBlogAuthor("VJ");
 		blogs.add(blog);
 		return Response.ok().entity(blogs).build();
 	}
