@@ -18,11 +18,13 @@ public class JPAUserDAO implements UserDAO {
 	private EntityManager em = emf.createEntityManager();
 	
 	@Override
-	public void createUser(User user) {
+	public int createUser(User user) {
 		em.getTransaction().begin();
 		em.persist(user);
+		em.flush();
 		em.getTransaction().commit();
 		em.close();
+		return user.getUserId();
 	}
 
 	@Override
